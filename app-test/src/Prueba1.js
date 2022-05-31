@@ -3,15 +3,18 @@ import React, { useState } from "react";
 import './Prueba1.css';
 
 async function getUserByID(id) {
- return fetch('http://127.0.0.1:8090/user/' + id, {
-   method: 'GET',
-   headers: {
-     'Content-Type': 'application/json'
-   }
- })
-   .then(data => data.json())
+  const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        user: '',
+        password: ''
+      })
+  };
+  fetch('https://localhost:8090/users/login', requestOptions)
+      .then(response => response.json())
+      .then(data => this.setState({ postId: data.id }));
 }
-
 
 function Prueba1() {
 
