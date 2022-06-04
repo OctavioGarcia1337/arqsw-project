@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import Login from './pages/Login';
@@ -22,6 +22,7 @@ function App() {
               const content = await response.json();
 
               setName(content.name);
+              console.log("aca toy");
           }
       )();
   });
@@ -35,8 +36,8 @@ function App() {
 
         <main className="form-signin w-100 m-auto">
           <Routes>
-            <Route path="/" element={() => {{<Home name={name} />}}}/>
-            <Route path="/login" element={() => {{<Login setName={setName} />}}}/>
+            <Route path="/" element={<Home name={name} />}/>
+            <Route path="/login" element={<Login setName={setName} />}/>
             <Route path="/register" element={< Register />}/>
           </Routes>
         </main>
