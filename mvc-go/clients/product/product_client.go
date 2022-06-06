@@ -13,27 +13,16 @@ func GetProductById(id int) model.Product {
 	var product model.Product
 
 	Db.Where("id = ?", id).First(&product)
-	log.Debug("product: ", product)
+	log.Debug("Product: ", product)
 
 	return product
 }
 
 func GetProducts() model.Products {
-	var products model.products
+	var products model.Products
 	Db.Find(&products)
 
 	log.Debug("Products: ", products)
 
 	return products
-}
-
-func InsertProduct(product model.Product) model.Product {
-	result := Db.Create(&product)
-
-	if result.Error != nil {
-		//TODO Manage Errors
-		log.Error("")
-	}
-	log.Debug("Product Created: ", product.ID)
-	return product
 }

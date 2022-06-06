@@ -27,13 +27,11 @@ func GetUsers() model.Users {
 	return users
 }
 
-func InsertUser(user model.User) model.User {
-	result := Db.Create(&user)
+func GetUserByUserName(userName string, password string) model.User {
+	var user model.User
 
-	if result.Error != nil {
-		//TODO Manage Errors
-		log.Error("")
-	}
-	log.Debug("User Created: ", user.ID)
+	Db.Where("user_name = ? AND password = ?", userName, password).First(&user) //traduccion y seteo en user
+	log.Debug("User: ", user)
+
 	return user
 }

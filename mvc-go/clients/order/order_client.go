@@ -9,17 +9,27 @@ import (
 
 var Db *gorm.DB
 
-func GetorderById(id int) model.Order {
+func GetOrderById(id int) model.Order {
 	var order model.Order
 
-	Db.Where("id = ?", id).First(&order)
+	Db.Where("id = ?", id).First(&order) 
 	log.Debug("Order: ", order)
 
 	return order
 }
 
-func Getorders() model.Orders {
-	var orders model.orders
+func GetOrdersByIdUser(idUser int) model.Orders {
+	var orders model.Orders
+
+	log.Debug("idUser: ", idUser)
+	Db.Where("id_user = ?", idUser).Find(&orders)
+	log.Debug("Order: ", orders)
+
+	return orders
+}
+
+func GetOrders() model.Orders {
+	var orders model.Orders
 	Db.Find(&orders)
 
 	log.Debug("Orders: ", orders)
@@ -27,13 +37,12 @@ func Getorders() model.Orders {
 	return orders
 }
 
-func Insertorder(order model.Order) model.Order {
+func InsertOrder(order model.Order) model.Order {
 	result := Db.Create(&order)
 
 	if result.Error != nil {
-		//TODO Manage Errors
 		log.Error("")
 	}
-	log.Debug("Order Created: ", order.ID)
+	log.Debug("Order Created: ", order.Id)
 	return order
 }
