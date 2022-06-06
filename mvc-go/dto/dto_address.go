@@ -1,9 +1,10 @@
 package dto
 
 type AddressDto struct {
-	ID     int    `json:"id"`
-	Calle  string `json:"calle"`
-	Barrio string `json:"barrio"`
-	Numero int    `json:"numero"`
-	Ciudad string `json:"ciudad"`
+	Id           int    `json:"id_address"`
+	Street       string `json:"calle"`
+	Number       int    `json:"numero"`
+	Neighborhood string `json:"barrio"`
+	Id_User      int    `json:"id_user"`
 }
+type AddressesDto []AddressDto
