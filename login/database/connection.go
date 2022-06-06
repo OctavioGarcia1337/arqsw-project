@@ -1,7 +1,8 @@
 package database
 
 import (
-	"github.com/OctavioGarcia1337/login/models"
+	"login/models"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )

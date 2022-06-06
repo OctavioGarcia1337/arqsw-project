@@ -4,8 +4,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/OctavioGarcia1337/login/database"
-	"github.com/OctavioGarcia1337/login/models"
+	"login/database"
+	"login/models"
+
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gofiber/fiber/v2"
 	"golang.org/x/crypto/bcrypt"

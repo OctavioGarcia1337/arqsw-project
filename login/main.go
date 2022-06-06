@@ -1,8 +1,9 @@
 package main
 
 import (
-	"github.com/OctavioGarcia1337/login/database"
-	"github.com/OctavioGarcia1337/login/routes"
+	"login/database"
+	"login/routes"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
