@@ -1,10 +1,14 @@
-package models
+package model
+
+import (
+	"time"
+)
 
 type Order struct {
-	ID      int    `gorm:"primaryKey"`
-	Total   uint   `gorm:"type:float(150);not null"`
-	Fecha   string `gorm:"type:varchar(350);not null"`
-	ID_user int    `gorm:"type:integer;not null"`
+	Id         int       `gorm:"primaryKey"`
+	Monto_Final float32   `gorm:"type:decimal(60,4);not null"`
+	Fecha      time.Time `gorm:"not null"`
+	Id_User int `gorm:"type:integer;not null"`
 }
 
 type Orders []Order

@@ -1,10 +1,12 @@
-package models
+package model
 
-
-type Product struct{
-	ID			int 	`gorm:"primaryKey"`
-	Nombre		string  `gorm:"type:varchar(250);not null"`
-	Precio		int 	`gorm:"type:varchar(250);not null"` //la u es para que el valor sea si o si positivo
+type Product struct {
+	Id          int     `gorm:"primaryKey"`
+	Name        string  `gorm:"type:varchar(350);not null"`
+	Price       float32 `gorm:"type:decimal(60,4);not null"`
+	Stock       int     `gorm:"type:int(150);not null"`
+	Id_Category  int     `gorm:"type:int(150);not null"`
+	Description string  `gorm:"type:varchar(350);not null"`
 }
 
 type Products []Product

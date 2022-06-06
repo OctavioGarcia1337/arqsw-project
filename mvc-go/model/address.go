@@ -1,9 +1,11 @@
-package models
+package model
 
 type Address struct {
-	ID     int    `gorm:"primaryKey"`
-	Calle  string `gorm:"type:varchar(250);not null"`
-	Barrio string `gorm:"type:varchar(250);not null"`
-	Numero int    `gorm:"type:varchar(4);not null"`
-	Ciudad string `gorm:"type:varchar(250);not null"`
+	Id           int    `gorm:"primaryKey"`
+	Neighborhood string `gorm:"type:varchar(250);not null"`
+	Street       string `gorm:"type:varchar(150);not null"`
+	Number       int    `gorm:"type:int(150);not null"`
+	Id_User       int    `gorm:"type:integer;not null"`
 }
+
+type Addresses []Address
