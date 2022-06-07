@@ -1,7 +1,7 @@
 package services
 
 import (
-	orderDetailCliente "mvc-go/clients/order_detail" //DAO
+	orderDetailCliente "mvc-go/clients/order_detail" 
 	"mvc-go/dto"
 	"mvc-go/model"
 	e "mvc-go/utils/errors"

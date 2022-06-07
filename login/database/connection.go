@@ -11,7 +11,7 @@ var DB *gorm.DB
 
 func Connect() {
 	//Coneccion con la BD Usuario,Contraseña,BD("root:root@/arqsw")
-	connection, err := gorm.Open(mysql.Open("root:root@/arqsw"), &gorm.Config{})
+	connection, err := gorm.Open(mysql.Open("root:rootroot@/mvc_go"), &gorm.Config{})
 
 	if err != nil {
 		panic("could not connect to the database")

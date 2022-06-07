@@ -12,8 +12,6 @@ type productService struct{}
 type productServiceInterface interface {
 	GetProductById(id int) (dto.ProductDto, e.ApiError)
 	GetProducts() (dto.ProductsDto, e.ApiError)
-	GetProductsByIdCategory(idCategory int) (dto.ProductsDto, e.ApiError)
-	GetProductsByText(texto string) (dto.ProductsDto, e.ApiError)
 }
 
 var (
