@@ -30,7 +30,7 @@ func GetUsers() model.Users {
 func GetUserByUserName(userName string, password string) model.User {
 	var user model.User
 
-	Db.Where("user_name = ? AND password = ?", userName, password).First(&user) //traduccion y seteo en user
+	Db.Where("user_name = ? AND password = ?", userName, password).First(&user)
 	log.Debug("User: ", user)
 
 	return user

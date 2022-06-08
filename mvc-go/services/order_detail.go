@@ -1,7 +1,7 @@
 package services
 
 import (
-	orderDetailCliente "mvc-go/clients/order_detail" 
+	orderDetailCliente "mvc-go/clients/order_detail"
 	"mvc-go/dto"
 	"mvc-go/model"
 	e "mvc-go/utils/errors"
@@ -34,7 +34,6 @@ func (s *orderDetailService) GetOrderDetailById(id int) (dto.OrderDetailDto, e.A
 		return orderDetailDto, e.NewBadRequestApiError("orderDetail not found")
 	}
 	orderDetailDto.Id = orderDetail.Id
-	orderDetailDto.Detalle = orderDetail.Detalle
 	orderDetailDto.Cantidad = orderDetail.Cantidad
 	orderDetailDto.Precio_Unitario = orderDetail.Precio_Unitario
 	orderDetailDto.Total = orderDetail.Total
@@ -52,7 +51,6 @@ func (s *orderDetailService) GetOrderDetails() (dto.OrderDetailsDto, e.ApiError)
 	for _, orderDetail := range orderDetails {
 		var orderDetailDto dto.OrderDetailDto
 		orderDetailDto.Id = orderDetail.Id
-		orderDetailDto.Detalle = orderDetail.Detalle
 		orderDetailDto.Cantidad = orderDetail.Cantidad
 		orderDetailDto.Precio_Unitario = orderDetail.Precio_Unitario
 		orderDetailDto.Total = orderDetail.Total
@@ -69,8 +67,6 @@ func (s *orderDetailService) GetOrderDetails() (dto.OrderDetailsDto, e.ApiError)
 func (s *orderDetailService) InsertOrderDetail(orderDetailDto dto.OrderDetailDto) (dto.OrderDetailDto, e.ApiError) {
 
 	var orderDetail model.OrderDetail
-
-	orderDetail.Detalle = orderDetailDto.Detalle
 	orderDetail.Cantidad = orderDetailDto.Cantidad
 	orderDetail.Precio_Unitario = orderDetailDto.Precio_Unitario
 	orderDetail.Total = orderDetailDto.Precio_Unitario * orderDetailDto.Cantidad
@@ -94,7 +90,6 @@ func (s *orderDetailService) GetOrderDetailByIdOrder(id_Order int) (dto.OrderDet
 	for _, orderDetail := range ordersDetail {
 		var orderDetailDto dto.OrderDetailDto
 		orderDetailDto.Id = orderDetail.Id
-		orderDetailDto.Detalle = orderDetail.Detalle
 		orderDetailDto.Cantidad = orderDetail.Cantidad
 		orderDetailDto.Precio_Unitario = orderDetail.Precio_Unitario
 		orderDetailDto.Total = orderDetail.Total

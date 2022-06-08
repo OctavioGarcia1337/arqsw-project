@@ -43,7 +43,6 @@ func (s *userService) LoginUser(loginDto dto.LoginDto) (dto.TokenDto, e.ApiError
 		token := jwt.New(jwt.SigningMethodHS256)
 		tokenString, _ := token.SignedString(jwtKey)
 		tokenDto.Token = tokenString
-		tokenDto.Id_user = user.Id
 	}
 	return tokenDto, nil
 }
@@ -56,6 +55,7 @@ func (s *userService) GetUserById(id int) (dto.UserDto, e.ApiError) {
 	if user.Id == 0 {
 		return userDto, e.NewBadRequestApiError("user not found")
 	}
+
 	userDto.Name = user.Name
 	userDto.LastName = user.Last_Name
 	userDto.UserName = user.User_Name
