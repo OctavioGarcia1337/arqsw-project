@@ -21,7 +21,7 @@ export const Home =()=>{
     
     const [categorias,setCategorias] = useState([]);
     const fetchApi = async()=>{
-    const response = await fetch('http://localhost:8090/category')
+    const response = await fetch('http://localhost:8090/categories')
     .then((response) => response.json());
     setCategorias(response);
     };

@@ -4,8 +4,8 @@ import { ObjectProducto } from "./ObjectProducto";
 
 export const Productos = ()=>{
 
-    const [productos,setProductos] = useState([]);
-    const [prodseach,setProdsearch] = useState([]);
+    const [productos, setProductos] = useState([]);
+    const [prodsearch, setProdsearch] = useState([]);
     const [busqueda, setBusqueda]= useState("");
     const fetchApi = async()=>{
     const response = await fetch('http://localhost:8090/products')
@@ -16,12 +16,13 @@ export const Productos = ()=>{
     useEffect(()=>{
     fetchApi();
     },[])
+
     const handleChange=e=>{
         setBusqueda(e.target.value);
         filtrar(e.target.value);
       }
       const filtrar=(terminoBusqueda)=>{
-        var resultadosBusqueda=prodseach.filter((elemento)=>{
+        var resultadosBusqueda=prodsearch.filter((elemento)=>{
           if(elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
           {
             return elemento;

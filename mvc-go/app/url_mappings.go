@@ -23,7 +23,7 @@ func mapUrls() {
 
 	//Category Mapping
 	router.GET("/category/:id", categoryController.GetCategoryById)
-	router.GET("/category", categoryController.GetCategories)
+	router.GET("/categories", categoryController.GetCategories)
 
 	//Order Mapping
 	router.GET("/order/:id", orderController.GetOrderById)
