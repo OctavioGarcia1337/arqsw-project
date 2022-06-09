@@ -18,11 +18,11 @@ func GetOrderById(id int) model.Order {
 	return order
 }
 
-func GetOrdersByIdUser(idUser int) model.Orders {
+func GetOrdersByIdUser(id_User int) model.Orders {
 	var orders model.Orders
 
-	log.Debug("idUser: ", idUser)
-	Db.Where("id_user = ?", idUser).Find(&orders)
+	log.Debug("id_User: ", id_User)
+	Db.Where("id_user = ?", id_User).Find(&orders)
 	log.Debug("Order: ", orders)
 
 	return orders
@@ -35,6 +35,15 @@ func GetOrders() model.Orders {
 	log.Debug("Orders: ", orders)
 
 	return orders
+}
+func UpdateMontoFinal(monto float32, id_Order int) float32 {
+	result := Db.Model(&model.Order{}).Where("id = ?", id_Order).Update("monto_final", monto)
+
+	if result.Error != nil {
+		//TODO Manage Errors
+		log.Error("Order no encontrada")
+	}
+	return monto
 }
 
 func InsertOrder(order model.Order) model.Order {

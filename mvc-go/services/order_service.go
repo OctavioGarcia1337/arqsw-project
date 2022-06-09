@@ -2,6 +2,8 @@ package services
 
 import (
 	orderCliente "mvc-go/clients/order"
+	orderDetailCliente "mvc-go/clients/order_detail"
+	productCliente "mvc-go/clients/product"
 	"mvc-go/dto"
 	"mvc-go/model"
 	e "mvc-go/utils/errors"
@@ -63,13 +65,35 @@ func (s *orderService) InsertOrder(orderDto dto.OrderDto) (dto.OrderDto, e.ApiEr
 
 	var order model.Order
 
-	order.Fecha = time.Now()
 	order.Monto_Final = orderDto.Monto_Final
+	order.Fecha = time.Now()
 	order.Id_User = orderDto.Id_Usuario
 
 	order = orderCliente.InsertOrder(order)
 
-	orderDto.Id = order.Id
+	var details model.OrderDetails
+	var total float32
+
+	for _, detailDto := range orderDto.Order_Details {
+
+		var detail model.OrderDetail
+		detail.Id_Product = detailDto.Id_Producto
+
+		var product model.Product = productCliente.GetProductById(detail.Id_Product)
+		detail.Precio_Unitario = product.Price
+		detail.Cantidad = detailDto.Cantidad
+		detail.Total = detail.Precio_Unitario * detail.Cantidad
+		detail.Nombre = product.Name
+		detail.Id_Order = order.Id
+
+		total = total + detail.Total
+
+		details = append(details, detail)
+	}
+
+	orderCliente.UpdateMontoFinal(total, order.Id)
+
+	orderDetailCliente.InsertOrdersDetail(details)
 
 	return orderDto, nil
 }

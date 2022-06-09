@@ -21,10 +21,8 @@ func GetProductById(id int) model.Product {
 func GetProductsByIdCategory(id_Category int) model.Products {
 	var products model.Products
 	log.Debug("id_category: ", id_Category)
-	//Db.Where("id_category = ?", id_Category).Find(&products)
 	Db.Where("id_category = ?", id_Category).Find(&products)
 	log.Debug("Product: ", products)
-
 	return products
 }
 

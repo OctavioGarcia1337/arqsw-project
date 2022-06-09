@@ -37,11 +37,26 @@ func InsertOrderDetail(orderDetail model.OrderDetail) model.OrderDetail {
 	return orderDetail
 }
 
-func GetOrderDetailByIdOrder(idOrder int) model.OrderDetails {
+func GetOrderDetailByIdOrder(id_Order int) model.OrderDetails {
 	var ordersDetail model.OrderDetails
 
-	Db.Where("id_order = ?", idOrder).Find(&ordersDetail) 
+	Db.Where("id_order = ?", id_Order).Find(&ordersDetail)
 	log.Debug("OrderDetail: ", ordersDetail)
+
+	return ordersDetail
+}
+func InsertOrdersDetail(ordersDetail model.OrderDetails) model.OrderDetails {
+
+	for _, orderDetail := range ordersDetail {
+
+		result := Db.Create(&orderDetail)
+
+		log.Debug("Order_Detail Created: ", orderDetail.Id)
+
+		if result.Error != nil {
+			log.Error("")
+		}
+	}
 
 	return ordersDetail
 }

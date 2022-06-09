@@ -41,7 +41,7 @@ func OrderInsert(c *gin.Context) {
 	var orderDto dto.OrderDto
 	err := c.BindJSON(&orderDto)
 
-	// Error Parsing json param
+
 	if err != nil {
 		log.Error(err.Error())
 		c.JSON(http.StatusBadRequest, err.Error())
@@ -59,12 +59,12 @@ func OrderInsert(c *gin.Context) {
 }
 
 func GetOrdersByIdUser(c *gin.Context) {
-	log.Debug("Order id to load: " + c.Param("idUser"))
+	log.Debug("Order id to load: " + c.Param("id_user"))
 
-	idUser, _ := strconv.Atoi(c.Param("idUser"))
+	id_User, _ := strconv.Atoi(c.Param("id_user"))
 	var ordersDto dto.OrdersDto
 
-	ordersDto, err := service.OrderService.GetOrdersByIdUser(idUser)
+	ordersDto, err := service.OrderService.GetOrdersByIdUser(id_User)
 
 	if err != nil {
 		c.JSON(err.Status(), err)
