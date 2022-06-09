@@ -38,7 +38,8 @@ func mapUrls() {
 
 	//Product Mapping
 	router.GET("/product/:id", productController.GetProductById)
-	router.GET("/product", productController.GetProducts)
+	router.GET("/products", productController.GetProducts)
+	router.GET("/product/category/:id", productController.GetProductsByIdCategory)
 
 	log.Info("Finishing mappings configurations")
 }
