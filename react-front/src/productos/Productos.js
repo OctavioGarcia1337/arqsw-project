@@ -8,7 +8,7 @@ export const Productos = ()=>{
     const [prodseach,setProdsearch] = useState([]);
     const [busqueda, setBusqueda]= useState("");
     const fetchApi = async()=>{
-    const response = await fetch('http://localhost:8090/product')
+    const response = await fetch('http://localhost:8090/products')
     .then((response) => response.json());
     setProductos(response);
     setProdsearch(response);
@@ -32,11 +32,11 @@ export const Productos = ()=>{
 
     return(
         <>
-        <h1> LISTA DE PRODUCTOS</h1>
+        <h1> PRODUCTOS</h1>
         <div>
         <input
           value={busqueda}
-          placeholder="Interesado en algo?"
+          placeholder="Escribe para buscar algun producto"
           onChange={handleChange}
         />
       </div>

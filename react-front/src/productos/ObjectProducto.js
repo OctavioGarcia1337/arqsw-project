@@ -1,7 +1,8 @@
 import React from "react";
 
 export const ObjectProducto =(
-    {id,
+    {
+    id,
     name,
     base_price,
     stock,
