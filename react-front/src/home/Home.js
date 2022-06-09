@@ -1,6 +1,7 @@
 import React, {useEffect, useState } from "react";
 import { ObjectProducto } from "../productos/ObjectProducto";
 import { ObjectCategories } from "../categorias/ObjectCategories";
+import "./Home-css.css"
 
 //import { Cookies } from "react-cookie";
 
@@ -13,11 +14,9 @@ async function GetProductByIdCategory(id) {
     })
       .then(data => data.json())
 }
-/*function RenderStart(){
-    "No hay Productos en la Categoria"    
-}*/
+
 export const Home =()=>{
-    //const Cookie = new Cookies();    
+    //const Cookie = new Cookies();    PARA CUANDO SEPAMOS USAR COOKIES
     
     const [categorias,setCategorias] = useState([]);
     const fetchApi = async()=>{
@@ -34,7 +33,6 @@ export const Home =()=>{
     const response = await GetProductByIdCategory(id)
     setProductos(response);
     console.log(response);
-    //console.log(id_cat);
     };
 
 const Render =(
@@ -53,10 +51,10 @@ const Render =(
     }
     </div>
 )
-//{productos? RenderStart():Render} 
+
     return(
         <>
-        <h1> CATEGORIAS</h1>
+        <h1 class="homeh1"> CATEGORIAS</h1>
         <div>
             {
                 categorias.map(categoria =>(

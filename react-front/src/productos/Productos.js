@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from "react";
 import { ObjectProducto } from "./ObjectProducto";
-
+import "./Productos.css"
 
 export const Productos = ()=>{
 
@@ -33,16 +33,16 @@ export const Productos = ()=>{
 
     return(
         <>
-        <h1> PRODUCTOS</h1>
+        <h1 class="productosh1"> PRODUCTOS</h1>
         <div>
-        <input
+        <input class="btn"
           value={busqueda}
-          placeholder="Escribe para buscar algun producto"
+          placeholder="Escribe para buscar"
           onChange={handleChange}
         />
       </div>
 
-        <div>
+        <div class="productos">
             {
                 productos.map(producto =>(
                   <ObjectProducto key={producto.id}

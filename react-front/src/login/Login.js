@@ -41,11 +41,16 @@ export function Login(){
     };
 
     return(
-        <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
-        <input id="user" type={"text"} placeholder="user" onChange={onChangeUser} value ={user} required></input>
-        <input id="password" type={"password"} placeholder="password" onChange={onChangePas} value={password} required></input>
-        <input type="submit" value="ingresar"></input>
+        <form onSubmit={handleSubmit} id="close-login-form">
+        <h1 class="loginh1">Login</h1>
+        <div>
+        <input class="btn" id="user" type={"text"} placeholder="user" onChange={onChangeUser} value ={user} required></input>
+        <input class="btn" id="password" type={"password"} placeholder="password" onChange={onChangePas} value={password} required></input>
+        </div>
+        <div>
+        <input class="buttons btn-15" type="submit" value="ingresar"></input>
+        </div>
+        
         </form>
 
 
