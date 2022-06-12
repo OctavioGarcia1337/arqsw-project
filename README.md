@@ -1,5 +1,5 @@
 # Arquitectura de Software
-# Proyecto Carrito de Compras
+## Proyecto Carrito de Compras
 
 ### Objetivos.
 Realizar un pequeño modelo de ecommerce con algunos productos, usuarios
