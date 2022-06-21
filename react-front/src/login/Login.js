@@ -1,6 +1,6 @@
 import React,{ useState} from "react"
 import Home from "../home/Home"
-import "./login-css.css"
+import "./login-css.css"  
 
 export function Login(){
     const[user,setUser]= useState("");
@@ -8,13 +8,11 @@ export function Login(){
 
     const onChangeUser =  (user)=>{
         setUser(user.target.value);
-        
     }
     
     const onChangePas = (password)=>{
     setPassword(password.target.value)};
 
-    
     const requestOptions={
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -29,7 +27,6 @@ export function Login(){
         } else{
             console.log(response.json());
             window.location.replace('/home');
-            
         }})
         
     };
@@ -52,9 +49,7 @@ export function Login(){
         </div>
         
         </form>
-
-
     );
-
+    
 
 }

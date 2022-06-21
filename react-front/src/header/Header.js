@@ -12,6 +12,16 @@ export const Header = ()=>{
             <li>
                <Link to="/products"> PRODUCTOS</Link> 
             </li>
+            
+            <li>
+               <Link to=""> LOGIN</Link> 
+            </li>
+            <li>
+               <Link to="/carrito"> CARRITO</Link> 
+            </li>
+            <li>
+               <Link to="/compras"> COMPRAS</Link> 
+            </li>
         </ul>
         </header>
     )
