@@ -23,7 +23,7 @@ func init() {
 	// DB Connections Paramters
 	DBName := "mvc_go"
 	DBUser := "root"
-	DBPass := "rootroot"
+	DBPass := "root"
 	DBHost := "127.0.0.1"
 	// ------------------------
 

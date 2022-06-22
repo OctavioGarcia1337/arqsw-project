@@ -15,7 +15,7 @@ async function GetProductByIdCategory(id) {
       .then(data => data.json())
 }
 
-export const Home =()=>{
+export const Home =()=>{ 
     //const Cookie = new Cookies();    PARA CUANDO SEPAMOS USAR COOKIES
     
     const [categorias,setCategorias] = useState([]);

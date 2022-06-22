@@ -1,11 +1,16 @@
 import React,{ useState} from "react"
-import Home from "../home/Home"
 import "./login-css.css"  
 
+function SLocalStorage(idR, LoggS){
+    localStorage.setItem("isLogged", LoggS);
+    localStorage.setItem("loggedID", idR);
+}
+
 export function Login(){
+    SLocalStorage(0, 0);
     const[user,setUser]= useState("");
     const[password,setPassword] = useState("");
-
+    let id;
     const onChangeUser =  (user)=>{
         setUser(user.target.value);
     }
@@ -17,7 +22,7 @@ export function Login(){
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         
-        body: JSON.stringify({user : user, password : password })
+        body: JSON.stringify({id_user : id, user : user, password : password })
     };
 
     const login = async()=>{
@@ -26,6 +31,7 @@ export function Login(){
            alert("error 400 user not found")
         } else{
             console.log(response.json());
+            SLocalStorage(3, 1); //el uno significa que se logro loggear, el 3 es la id del benja hardcodeada.
             window.location.replace('/home');
         }})
         

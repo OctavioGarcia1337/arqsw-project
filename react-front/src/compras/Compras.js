@@ -1,11 +1,13 @@
 import React, { useEffect, useState} from "react";
+
 import {ObjectCompras } from "./ObjectCompras";
 import "./Compras.css"
 
 export const Compras = ()=>{
+  let userIDLS = localStorage.getItem('loggedID');
   const [compras, setCompras] = useState([]);
   const fetchApi = async()=>{
-  const response = await fetch('http://localhost:8090/orders')
+  const response = await fetch('http://localhost:8090/order/user/' + userIDLS)
   .then((response) => response.json());
   setCompras(response);
   };
