@@ -103,7 +103,10 @@ func (s *orderService) GetOrdersByIdUser(id_User int) (dto.OrdersDto, e.ApiError
 
 	var orders model.Orders = orderCliente.GetOrdersByIdUser(id_User)
 	var ordersDto dto.OrdersDto
-
+	if orders == nil{
+		return ordersDto, e.NewBadRequestApiError("order not found")
+	}
+	var total float32
 	for _, order := range orders {
 		var orderDto dto.OrderDto
 
@@ -111,8 +114,24 @@ func (s *orderService) GetOrdersByIdUser(id_User int) (dto.OrdersDto, e.ApiError
 		orderDto.Fecha = order.Fecha
 		orderDto.Monto_Final = order.Monto_Final
 		orderDto.Id_Usuario = order.Id_User
+		var orderDetails model.OrderDetails = orderDetailCliente.GetOrderDetailByIdOrder(order.Id)
+		for _, orderDetail := range orderDetails{
+			var orderDetailDto dto.OrderDetailDto
+			orderDetailDto.Id_Producto = orderDetail.Id_Product
+			var product model.Product = productCliente.GetProductById(orderDetailDto.Id_Producto)
 
+			orderDetailDto.Id = orderDetail.Id
+			orderDetailDto.Precio_Unitario = product.Price
+			orderDetailDto.Cantidad = orderDetail.Cantidad
+			orderDetailDto.Total = orderDetail.Precio_Unitario * orderDetail.Cantidad
+			orderDetailDto.Nombre = orderDetail.Nombre
+			orderDetailDto.Id_Order = orderDetail.Id
+			total += orderDetailDto.Total
+			orderDto.Order_Details = append(orderDto.Order_Details, orderDetailDto)
+		}
+		orderDto.Monto_Final = total
 		ordersDto = append(ordersDto, orderDto)
+		total = 0
 	}
 
 	return ordersDto, nil

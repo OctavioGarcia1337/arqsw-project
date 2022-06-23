@@ -7,41 +7,38 @@ import { ObjectCarrito } from "./ObjectCarrito";
 import "./Carrito.css"
 
 export const Carrito = ()=>{
-
-    
-
-    const [productos, setProductos] = useState([]);
-    const [prodsearch, setProdsearch] = useState([]);
-    const [busqueda, setBusqueda]= useState("");
-    const fetchApi = async()=>{
-    const response = await fetch('http://localhost:8090/products')
+  const [productos, setProductos] = useState([]);
+  const [prodsearch, setProdsearch] = useState([]);
+  const [busqueda, setBusqueda]= useState("");
+  const fetchApi = async()=>{
+  const response = await fetch('http://localhost:8090/products')
     .then((response) => response.json());
     setProductos(response);
     setProdsearch(response);
-    };
+  };
     useEffect(()=>{
     fetchApi();
     },[])
 
-    const handleChange=e=>{
-        setBusqueda(e.target.value);
-        filtrar(e.target.value);
-      }
-      const filtrar=(terminoBusqueda)=>{
+      const filtrar=()=>{
+        var Carrito_arreglo_id=localStorage.getItem("CarritoVirtual");
         var resultadosBusqueda=prodsearch.filter((elemento)=>{
-          if(elemento.name.toString().toLowerCase().includes(terminoBusqueda.toLowerCase()))
+          if(Carrito_arreglo_id.includes(elemento.id.toString()))
           {
             return elemento;
           }
         });
         setProductos(resultadosBusqueda);
       }
-
+      
+      
     return(
         <>
-        <h1 class="productosh1"> CARRITO</h1>     
+        <h1 class="productosh1" onload="filtrar();"> CARRITO</h1>     
         <h2 class="productosh2"> Productos</h2> 
-                
+            <button onclick="Comprar()">
+                Comprar
+            </button>    
             <div class="productos"> 
                 {
                     productos.map(producto =>(

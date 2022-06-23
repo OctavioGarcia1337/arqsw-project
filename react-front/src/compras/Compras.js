@@ -18,8 +18,8 @@ export const Compras = ()=>{
 
   return(
     <>
-      <h1 class="productosh1"> Lista de Compras</h1>              
-      <div class="productos"> 
+      <h1 className="productosh1"> Lista de Compras</h1>              
+      <div className="productos"> 
       {
         compras.map(compras =>(
           <ObjectCompras key={compras.id}
@@ -27,6 +27,7 @@ export const Compras = ()=>{
           monto_final={compras.monto_final}
           id_user={compras.id_user}
           fecha={compras.fecha}
+          order_details={compras.order_details}
           />  
         ))
       }

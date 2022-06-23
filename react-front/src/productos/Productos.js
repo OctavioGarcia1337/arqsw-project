@@ -33,16 +33,16 @@ export const Productos = ()=>{
 
     return(
         <>
-        <h1 class="productosh1"> PRODUCTOS</h1>
+        <h1 className="productosh1"> PRODUCTOS</h1>
         <div>
-        <input class="btn"
+        <input className="btn"
           value={busqueda}
           placeholder="Escribe para buscar"
           onChange={handleChange}
         />
       </div>
 
-        <div class="productos">
+        <div className="productos">
             {
                 productos.map(producto =>(
                   <ObjectProducto key={producto.id}
