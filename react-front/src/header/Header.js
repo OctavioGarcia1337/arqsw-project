@@ -22,7 +22,7 @@ export const Header = ()=> {
                <Link to="/products"> PRODUCTOS</Link> 
             </li>
             <li>
-            {UserToken!=undefined ? <a href='#' onClick={()=>{logOutCookies(); window.location.reload()}}>LOG OUT</a>: <a href="http://localhost:3000/login"  > LOG IN </a>}
+            {UserToken!=undefined ? <a href='#' onClick={()=>{logOutCookies(); window.location.replace("/login")}}>LOG OUT</a>: <a href="http://localhost:3000/login"  > LOG IN </a>}
             </li>
             <li>
                 {UserToken!=undefined? <a href='http://localhost:3000/compras'>MIS COMPRAS</a>: <></>}
