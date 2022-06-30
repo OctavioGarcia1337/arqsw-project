@@ -10,33 +10,6 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-func GetOrderById(c *gin.Context) {
-	log.Debug("Order id to load: " + c.Param("id"))
-
-	id, _ := strconv.Atoi(c.Param("id"))
-	var orderDto dto.OrderDto
-
-	orderDto, err := service.OrderService.GetOrderById(id)
-
-	if err != nil {
-		c.JSON(err.Status(), err)
-		return
-	}
-	c.JSON(http.StatusOK, orderDto)
-}
-
-func GetOrders(c *gin.Context) {
-	var ordersDto dto.OrdersDto
-	ordersDto, err := service.OrderService.GetOrders()
-
-	if err != nil {
-		c.JSON(err.Status(), err)
-		return
-	}
-
-	c.JSON(http.StatusOK, ordersDto)
-}
-
 func OrderInsert(c *gin.Context) {
 	var orderDto dto.OrderDto
 

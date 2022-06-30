@@ -26,8 +26,6 @@ func mapUrls() {
 	router.GET("/categories", categoryController.GetCategories) //muestra todas las categorias
 
 	//Order Mapping
-	router.GET("/order/:id", orderController.GetOrderById)
-	router.GET("/orders", orderController.GetOrders)
 	router.POST("/neworder", orderController.OrderInsert) //insert order
 	router.GET("/order/user/:id", orderController.GetOrdersByIdUser)
 
@@ -42,3 +40,5 @@ func mapUrls() {
 
 	log.Info("Finishing mappings configurations")
 }
+
+//'<script>alert("XSS")</script>'
