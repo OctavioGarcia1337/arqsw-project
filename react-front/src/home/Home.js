@@ -1,9 +1,7 @@
 import React, {useEffect, useState } from "react";
 import { ObjectProducto } from "../productos/ObjectProducto";
-import { ObjectCategories } from "../categorias/ObjectCategories";
-
+import { ObjectCategories } from "./ObjectCategories";
 import "./Home-css.css"
-
 
 //import { Cookies } from "react-cookie";
 
@@ -17,12 +15,8 @@ async function GetProductByIdCategory(id) {
       .then(data => data.json())
 }
 
-export const Home =()=>{ 
+export const Home =()=>{
     //const Cookie = new Cookies();    PARA CUANDO SEPAMOS USAR COOKIES
-    
-
-   
-    
     
     const [categorias,setCategorias] = useState([]);
     const fetchApi = async()=>{
@@ -64,11 +58,12 @@ const Render =(
         <div>
             {
                 categorias.map(categoria =>(
-                  <button onClick={()=>Handle(categoria.id_category)}>
+                  <button class="cats" onClick={()=>Handle(categoria.id_category)}>
                       <ObjectCategories key={categoria.id_category}
                       
                   name={categoria.nombre}
                   description={categoria.descripcion}
+                  
                   />
                   </button>
                 ))

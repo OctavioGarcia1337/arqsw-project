@@ -1,15 +1,18 @@
 import React,{ useState} from "react"
 import "./login-css.css"  
 import {useNavigate} from "react-router-dom"
-
+import { getUserCookies, loginCookies } from "../Cookies";
+/*
 function SLocalStorage(idR, LoggS){
     localStorage.setItem("isLogged", LoggS);
     localStorage.setItem("loggedID", idR);
 }
 
+
+
+*/
 export function Login(){
     let navigate = useNavigate();
-    SLocalStorage(0, 0);
     const[user,setUser] = useState("");
     const[password,setPassword] = useState("");
     const[log] = useState("");
@@ -28,17 +31,18 @@ export function Login(){
         body: JSON.stringify({id_user : log, user : user, password : password })
     };
 
-    const login = async()=>{
+     const login = async()=>{
         fetch('http://localhost:8090/login',requestOptions)
-        .then(response => response.json()).then(data => {
-            let id = JSON.stringify(data.id_user);
-            SLocalStorage(id, 1); 
-            navigate("home")
-
-        }).catch(err => console.log(err))
+        .then(response=>response.json())
+        .then(response => {if (response.status == 400) {
+            alert("user not found")
+        }else{
+            window.location.replace("/") 
+            loginCookies(response.token)
+            
+        }})
         
-    };
-    
+    }; 
    
     const handleSubmit= (event)=>{
         event.preventDefault();

@@ -1,18 +1,15 @@
 import React from 'react';
-import {Router} from "react-router-dom";
+import {BrowserRouter as Router} from "react-router-dom";
 import {Paginas} from './Paginas'
-import {Header} from "./header/Header";
-
+import {Header} from './header/Header';
 import './App.css';
 
 function App() {
   return (
-    //<div><Header/></div>
     <div>
       <Router>
         <div><Header/></div>
-        
-        <Paginas/>
+        <div><Paginas/></div>
       </Router>
     </div>
   );
