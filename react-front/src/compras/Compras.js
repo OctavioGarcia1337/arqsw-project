@@ -5,17 +5,6 @@ import "./Compras.css"
 
 const Cookie = new Cookies();
 
-/*
-async function GetOrdersByIdUser(id) {
-  return fetch('http://localhost:8090/order/user/' +id, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-    .then(data => data.json())
-}
-*/
 export const Compras = ()=>{
     
     let cookie = Cookie.get("user")
@@ -40,22 +29,12 @@ export const Compras = ()=>{
         const res = await fetch('http://localhost:8090/order/user/' +token)
         const data = await res.json()
         setOrdenes(data)
+        console.log(data)
       }
       catch(e){
         console.log(e)
       }
     }
-
-    
-    /*
-      if (response.status == 400) {
-        alert("No hay ninguna compra")
-        window.location.replace("")
-      }else{
-        setOrdenes(response)
-        console.log(response)
-      };
-      */
         return(
             <>
             <h1 className= "productosh1">MIS COMPRAS</h1>
@@ -71,7 +50,6 @@ export const Compras = ()=>{
                     id_user = {orden.id_user}
                     order_details = {orden.order_details}
                     /> 
-                    
                 )
                 )
             }
