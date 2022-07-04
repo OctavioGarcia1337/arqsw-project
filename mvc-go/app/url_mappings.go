@@ -22,7 +22,7 @@ func mapUrls() {
 
 	//Order Mapping
 	router.POST("/neworder", orderController.OrderInsert) //insert order
-	router.GET("/order/user/:id", orderController.GetOrdersByIdUser)
+	router.GET("/order/user/:token", orderController.GetOrdersByIdUser)
 
 	//OrderDetail Mapping
 	router.GET("/orderDetail/:id", orderDetailController.GetOrderDetailById)

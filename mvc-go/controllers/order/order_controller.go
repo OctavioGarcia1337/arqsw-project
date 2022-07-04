@@ -4,7 +4,6 @@ import (
 	"mvc-go/dto"
 	service "mvc-go/services"
 	"net/http"
-	"strconv"
 
 	"github.com/gin-gonic/gin"
 	log "github.com/sirupsen/logrus"
@@ -31,12 +30,11 @@ func OrderInsert(c *gin.Context) {
 }
 
 func GetOrdersByIdUser(c *gin.Context) {
-	log.Debug("Order id to load: " + c.Param("id"))
 
-	id_User, _ := strconv.Atoi(c.Param("id"))
 	var ordersDto dto.OrdersDto
+	token := c.Param("token")
 
-	ordersDto, err := service.OrderService.GetOrdersByIdUser(id_User)
+	ordersDto, err := service.OrderService.GetOrdersByIdUser(token)
 
 	if err != nil {
 		c.JSON(err.Status(), err)

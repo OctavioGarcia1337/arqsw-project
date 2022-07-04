@@ -1,18 +1,12 @@
 import React,{ useState} from "react"
+import Cookies from "universal-cookie";
 import "./login-css.css"  
-import {useNavigate} from "react-router-dom"
+
 import { getUserCookies, loginCookies } from "../Cookies";
-/*
-function SLocalStorage(idR, LoggS){
-    localStorage.setItem("isLogged", LoggS);
-    localStorage.setItem("loggedID", idR);
-}
+const Cookie =new Cookies();
 
-
-
-*/
 export function Login(){
-    let navigate = useNavigate();
+    
     const[user,setUser] = useState("");
     const[password,setPassword] = useState("");
     const[log] = useState("");
@@ -28,9 +22,10 @@ export function Login(){
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         
-        body: JSON.stringify({id_user : log, user : user, password : password })
+        body: JSON.stringify({user : user, password : password })
     };
 
+    
      const login = async()=>{
         fetch('http://localhost:8090/login',requestOptions)
         .then(response=>response.json())
@@ -39,6 +34,7 @@ export function Login(){
         }else{
             window.location.replace("/") 
             loginCookies(response.token)
+            Cookie.set("user", response.id_user + "," + response.token, {path: "/"})
             
         }})
         
